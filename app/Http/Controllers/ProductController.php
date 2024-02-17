@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Rules\ValidChiefId;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Cart;
+
 
 
 
@@ -61,7 +65,7 @@ class ProductController extends Controller
 
         Product::create($validatedData);
 
-        return response()->json(['message' => 'Product created successfully'], 201);    }
+        return view('admin.products.create');    }
 
     public function show($id)
     {
@@ -127,4 +131,90 @@ class ProductController extends Controller
     // Redirect to the index page or any other page after deletion
     return redirect()->route('admin.viewProduct')->with('success', 'Product deleted successfully');
     }
+
+
+    protected $table = 'products';
+        // Define the relationship with the User model
+        public function chief()
+        {
+            return $this->belongsTo(User::class, 'id');
+        }
+
+    public function productShowByLocation()
+    {
+          // Retrieve the currently logged-in user
+        $user = Auth::user();
+        $searchTerm = $user->location;
+
+        // Retrieve products with the chief's location matching the user's location
+        $products = DB::table('products')
+            ->join('users', 'products.chief_id', '=', 'users.id')
+            ->where('users.location', 'LIKE', '%' . $user->location . '%')
+            ->select('products.*','users.name as chef_name') // adjust this based on your actual column names
+            ->get();
+ 
+            return view('customer.products.index', ['products' => $products, 'searchTerm' => $searchTerm]);
+
+    }
+
+    public function allProductShow()
+    {
+        $searchTerm = 'All Locations';
+        $products = Product::join('users', 'products.chief_id', '=', 'users.id')
+        ->select('products.*', 'users.name as chef_name')
+        ->get();
+            return view('customer.products.index', ['products' => $products,'searchTerm' => $searchTerm]);
+    }
+
+    public function searchProducts(Request $request)
+{
+    $searchTerm = $request->input('search');
+    session(['searchTerm' => $searchTerm]);
+
+    // Assuming you have a relationship between User and Product models
+    $products = Product::join('users', 'products.chief_id', '=', 'users.id')
+    ->where('food_descriptions', 'LIKE', '%' . $searchTerm . '%')
+    ->orWhere('food_name', 'LIKE', '%' . $searchTerm . '%')
+    ->orWhere('users.name', 'LIKE', '%' . $searchTerm . '%') // assuming chef_name is stored in the name column of users table
+    ->orWhere('users.location', 'LIKE', '%' . $searchTerm . '%')        
+    ->select('products.*','users.name as chef_name')
+        ->get();
+
+        return view('customer.products.index', compact('products', 'searchTerm'));
+    }
+
+
+    public function viewProductDetailAdmin($productId)
+    {
+       // Retrieve product details with the corresponding chief information using join
+       $productDetails = DB::table('products')
+       ->join('orders', 'products.id', '=', 'orders.product_id')
+       ->join('users','orders.customer_id', '=', 'users.id')
+       ->select(
+           'products.id as product_id',
+           'products.food_name',
+           'products.food_price',
+           'products.food_image',
+           'products.food_descriptions',
+           'products.category_tag',
+           'products.is_available',
+           'users.id as user_id',
+           'users.email as email',
+           'users.contactno as contactno',
+           'users.name as name',
+           'users.location as location',
+           'users.profile_photo_path'
+       )
+       ->where('products.id', '=', $productId)
+       ->first();
+   // Check if the product is found
+   if (!$productDetails) {
+       return response()->json(['error' => 'Product not found'], 404);
+   }
+
+   // Pass data to the view and return it
+   return view('admin.products.productDetails', ['productDetails' => $productDetails]);
+    }
+
+
 }
