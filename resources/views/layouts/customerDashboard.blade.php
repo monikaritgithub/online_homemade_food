@@ -9,21 +9,23 @@
         <!-- External Stylesheets -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        @stack('css')
 
         <!-- Custom Stylesheet -->
         <style>
             /* Navbar Styling */
             body {
                 margin: 0;
-                padding: 0;
+                background: #F3F4F6;
+
             }
 
             .navbar {
                 position: relative;
-                width: 100%;
+                margin: auto;
+                width: 90%;
                 background: #F3F4F6;
                 padding: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -174,8 +176,9 @@
                     <a href="#" class="dropdown-toggle" id="productsDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">Products</a>
                     <div class="dropdown-menu" aria-labelledby="productsDropdown">
-                        <a class="dropdown-item" href="">My Location</a>
-                        <a class="dropdown-item" href="">All Location</a>
+                        <a class="dropdown-item" href="{{ route('customer.viewProductByLocation') }}"> In
+                            {{ Auth::user()->location }}</a>
+                        <a class="dropdown-item" href="{{ route('customer.viewProduct') }}">All Location</a>
                     </div>
                 </div>
                 <a href="#">Cart</a>
@@ -203,7 +206,7 @@
         @yield('content')
         <!-- External Scripts -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-        
+
     </body>
 
 </html>

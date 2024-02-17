@@ -1,0 +1,239 @@
+/* title */
+.heading {
+    margin: auto;
+    width: 50%;
+}
+.title {
+    /* Our secret ingredient is the love of housewives turned chefs. */
+
+    width: 800px;
+
+    font-family: "Inter";
+    font-style: normal;
+
+    font-size: 48px;
+    line-height: 62px;
+    text-align: center;
+    color: #252525;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.subtitle {
+    /* Each recipe with the warmth and expertise that only home cooking can provide. */
+
+    width: 762px;
+    height: 24px;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+
+    color: #5b5b5b;
+
+    padding-top: 10px;
+    padding-bottom: 90px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.part1 {
+    color: #b11f24;
+    font-weight: 700;
+}
+.subtext {
+    font-weight: bolder;
+    font-weight: 700;
+    text-decoration: underline #b11f24 3px;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #fff;
+    margin-bottom: 24px;
+}
+.product-card a {
+    text-decoration: none;
+}
+.product-card .stock {
+    position: absolute;
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 12px;
+    margin: 8px;
+    font-size: 12px;
+}
+.product-card .product-card-img {
+    max-height: 260px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+.product-card .product-card-img img {
+    width: 100%;
+}
+.product-card .product-card-body {
+    padding: 10px 10px;
+}
+
+.product-card .product-card-body .original-price {
+    font-size: 18px;
+    color: #937979;
+    font-weight: 400;
+    text-decoration: line-through;
+}
+.product-card .product-card-body .btn1 {
+    border: 1px solid;
+    margin-right: 3px;
+    border-radius: 0px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+/* our products based on */
+.ourProducts {
+    /* Our Products Based on Balkumari */
+
+    position: relative;
+    width: 50%;
+
+    left: calc(50% - 480px / 2);
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+
+    color: #252525;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-name a {
+    flex: 1;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+
+    color: #252525;
+
+    text-align: left;
+}
+
+.selling-price {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 31px;
+
+    color: #252525;
+
+    text-align: end;
+}
+
+.product-brand {
+    /* Chef: Sita Khadka */
+
+    width: 90%;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #252525;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.add-to-cart {
+    /* Frame 22 */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+    color: #ffffff;
+    width: 134px;
+    height: 38px;
+
+    background: #f0484e;
+    border-radius: 5px;
+    text-decoration: none;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.view-product {
+    /* Frame 23 */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+
+    width: 134px;
+    height: 38px;
+    text-decoration: none;
+    color: #f0484e;
+    background: #ffffff;
+    border: 1px solid #f0484e;
+    border-radius: 5px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.heart {
+    /* Vector */
+
+    width: 41.77px;
+    height: 37.68px;
+
+    background: #f0484e;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
