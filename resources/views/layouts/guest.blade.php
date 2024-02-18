@@ -17,11 +17,36 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
+    <body class="bg-white">
+        <div class="font-sans text-gray-900 antialiased ">
             {{ $slot }}
         </div>
 
         @livewireScripts
+
+        <style>
+                        .navbar {
+                position: relative;
+                width: 90%;
+                margin:auto;
+                background: #F3F4F6;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .navbar-logo {
+                font-size: 24px;
+                font-weight: bold;
+                color: #333;
+                margin: auto;
+                width:50%;
+                display: flex;
+            }
+            *{
+                background-color: white;
+            }
+        </style>
     </body>
 </html>
