@@ -166,6 +166,15 @@ class ProductController extends Controller
             return view('customer.products.index', ['products' => $products,'searchTerm' => $searchTerm]);
     }
 
+    public function startProductShow()
+    {
+        $searchTerm = 'All Locations';
+        $products = Product::join('users', 'products.chief_id', '=', 'users.id')
+        ->select('products.*', 'users.name as chef_name')
+        ->get();
+            return view('welcome', ['products' => $products,'searchTerm' => $searchTerm]);
+    }
+
     public function searchProducts(Request $request)
 {
     $searchTerm = $request->input('search');
@@ -183,6 +192,22 @@ class ProductController extends Controller
         return view('customer.products.index', compact('products', 'searchTerm'));
     }
 
+    public function searchProductsWithoutAuth(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        session(['searchTerm' => $searchTerm]);
+    
+        // Assuming you have a relationship between User and Product models
+        $products = Product::join('users', 'products.chief_id', '=', 'users.id')
+        ->where('food_descriptions', 'LIKE', '%' . $searchTerm . '%')
+        ->orWhere('food_name', 'LIKE', '%' . $searchTerm . '%')
+        ->orWhere('users.name', 'LIKE', '%' . $searchTerm . '%') // assuming chef_name is stored in the name column of users table
+        ->orWhere('users.location', 'LIKE', '%' . $searchTerm . '%')        
+        ->select('products.*','users.name as chef_name')
+            ->get();
+    
+            return view('welcome', compact('products', 'searchTerm'));
+        }
 
     public function viewProductDetailAdmin($productId)
     {

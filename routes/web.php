@@ -19,7 +19,7 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/');
 });
 
 Route::middleware([
@@ -56,10 +56,15 @@ Route::post('/admin/delete-product/{id}', [ProductController::class, 'destroy'])
 Route::delete('/admin/delete-product/{id}', [ProductController::class, 'destroy'])->name('admin.deleteProduct');
 
 
+Route::get('/', [ProductController::class, 'startProductShow'])->name('startProduct');
+
 // for customer routing
 Route::get('/customer/view-product', [ProductController::class, 'allProductShow'])->name('customer.viewProduct');
 // products only in same location of chief and customer
 Route::get('/customer/view-product-location', [ProductController::class, 'productShowByLocation'])->name('customer.viewProductByLocation');
+
+//search product without login
+Route::get('/search', [ProductController::class, 'searchProductsWithoutAuth'])->name('search.products.withoutAuth');
 
 // show products by searching
 Route::get('/search/products', [ProductController::class, 'searchProducts'])->name('search.products');
