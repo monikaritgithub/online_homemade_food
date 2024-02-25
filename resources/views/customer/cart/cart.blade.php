@@ -175,6 +175,7 @@
                                             <section class="product__content default-container"
                                                 aria-label="Product content">
                                                 <header>
+                                                    
                                                     <h2 class="company-name" tabindex="0">{{ $productDetails->name }}
                                                     </h2>
                                                     <p class="product__name" tabindex="0">Autumn Limited Edition
@@ -207,11 +208,17 @@
                                                         product is out of stock add to cart we will notify you later
                                                         when it availllable
                                                     </div>
-                                                    <button type="button" class="cart-form__add-btn">
-                                                        <span class="icon icon-cart m-auto pr-0"
-                                                            aria-hidden="true"></span>
-                                                        Add to cart
-                                                    </button>
+                                                    <div class="container d-flex justify-content-center">
+    <div class="text-center">
+        <button type="button" class="cart-form__add-btn mx-auto" style="width: 100%;">
+            <span class="icon icon-cart m-auto text-center" aria-hidden="true"></span>
+            Add to cart
+        </button>
+    </div>
+</div>
+
+
+                                                  </div>
                                                     @else
                                                     <div class="cart-form">
                                                         <button id="payment-button" class="text-center khalti-button">
@@ -317,6 +324,8 @@
                                         function redirectToLogin() {
                                             window.location.href = "{{ route('login') }}";
                                         }
+
+                                        
                                     </script>
                                     <!-- Paste this code anywhere in you body tag -->
                                     <style>
