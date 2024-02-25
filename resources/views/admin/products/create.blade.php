@@ -18,7 +18,7 @@
 
 
         <x-validation-errors class="mb-4" />
-        <div className="p-4">
+        <div className="container">
             <form class="row g-3 p-10 m-10" method="POST" action="{{ route('admin.storeProduct') }}"
                 enctype="multipart/form-data">
                 @csrf

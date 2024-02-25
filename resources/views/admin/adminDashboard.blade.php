@@ -1,49 +1,115 @@
 @extends('layouts.adminDashboard')
 @section('content')
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering Dashboard</title>
+    <link rel="stylesheet" href="{{asset('css/admin/dashboard.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
   </head>
 
   <body>
-
-
-
-    <div class="text-center bg-white">
-
-
-      <div class="col-md-12">
-        <h1 class="text-center">Admin Dashboard</h1>
-      </div>
-
+    <div class="container">
+      
+    <!-- Analytics Dashboard -->
+    <div class="analytics">
+      <h1 class="heading">Analytics Dashboard </h1><span class="month-label">Month: <select id="monthSelector"
+          class="dropbtn">
+          <option value="allMonths" selected>All Months</option> <!-- Default selected option -->
+          <option value="january">January</option>
+          <option value="february">February</option>
+          <!-- Add other months here -->
+        </select></span>
+   
 
     </div>
 
 
+    </h1>
+    <div class="cards">
+      <div class="card">
+        <h2>Total Sales</h2>
+        <p class="amount">500</p>
+        <p class="increment">+10%</p>
+      </div>
+      <div class="card">
+        <h2>Cash</h2>
+        <p class="amount">300K</p>
+        <p class="decrement">-5%</p>
+      </div>
+      <div class="card">
+        <h2>Khalti</h2>
+        <p class="amount">200K</p>
+        <p class="increment">+15%</p>
+      </div>
+    </div>
+    </div>
 
+    <!-- Recent Sales -->
+    <div class="recent-sales cart container">
+      <h1 class="heading">Recent Sales<span class="view-details-btn">View Sales in details</span></h1>
+      <table class="sales-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Customer Name</th>
+            <th>Amount</th>
+            <th>Payment Method</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically added via JavaScript -->
+        </tbody>
+      </table>
+    </div>
 
+    <!-- Top Selling Product -->
+    <div class="top-selling-product cart container">
+      <h1 class="heading">Top Selling Product</h1>
+      <table class="top-selling-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total Amount Generated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically added via JavaScript -->
+        </tbody>
+      </table>
+    </div>
 
+    <!-- Top Selling Chef -->
+    <div class="top-selling-chef cart container">
+      <h1 class="heading">Top Selling Chef</h1>
+      <table class="top-selling-table">
+        <thead>
+          <tr>
+            <th>Chef Name</th>
+            <th>Quantity</th>
+            <th>Total Amount Generated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically added via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-      crossorigin="anonymous"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    </div>
+    <script src="scripts.js"></script>
   </body>
 
 </html>
+
 
 @endsection

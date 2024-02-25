@@ -104,7 +104,7 @@
     <body>
 
         <!-- Responsive Navbar -->
-        <div class="navbar">
+        <div class="navbar container">
             <!-- yummy tummy navbar svg -->
             <div class="navbar-logo">
                 <svg width="38" height="31" viewBox="0 0 38 31" fill="none" xmlns="http://www.w3.org/2000/svg">
