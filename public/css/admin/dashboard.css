@@ -1,0 +1,212 @@
+/* Place your CSS styles here */
+
+/* Font family */
+
+body{
+
+                width: 100%;
+                margin:auto;
+                background: #F3F4F6;
+                padding: 10px;
+}
+
+body,
+select,
+button {
+    font-family: "Inter", sans-serif;
+}
+
+.analytics {
+    display: flex;
+}
+
+.month-label {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #252525;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 20px;
+    justify-content: flex-end; /* Align to the right */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px; /* Add margin for spacing */
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #252525;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    position: absolute;
+    top: 100%; /* Position the dropdown below the "Month" text */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #f9f9f9;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    position: relative; /* Added */
+    width: 30%;
+    height: 200px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #0a4e29;
+    border-radius: 44px;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.amount {
+   /* 45K */
+
+position: absolute;
+width: fit-content;
+height: 73px;
+
+margin: auto;
+top: 40%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 60px;
+line-height: 73px;
+/* identical to box height */
+
+color: #0D4E29;
+
+
+}
+
+.increment {
+    color: green;
+    position: absolute;
+    bottom: 5px;
+    right: 20px; /* Positioned bottom-right */
+}
+
+.decrement {
+    color: red;
+    position: absolute;
+    bottom: 5px;
+    right: 20px; /* Positioned bottom-right */
+}
+
+.heading {
+    display: flex;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 54px;
+
+    color: #252525;
+}
+
+.view-details-btn {
+    background-color: #f0484e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center; /* Align text in the center */
+    margin-left: auto; /* Pushed to the right */
+    /* View Sales in details */
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.sales-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.sales-table th,
+.sales-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #1e1e1e;
+}
+
+.top-selling-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.top-selling-table th,
+.top-selling-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+table th,
+table td {
+    /* Product Name */
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+    color: #1e1e1e;
+}
+
+.cart {
+    margin-top: 90px;
+}
+.analytics {
+    margin-top: 30px;
+}

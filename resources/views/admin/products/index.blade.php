@@ -12,7 +12,7 @@
 
     <body>
 
-        <div class="pt-10 mt-10 ">
+        <div class="pt-10 mt-10 container">
             <div class="table-responsive">
                 <table class="table" class="">
                     <thead class="table-dark">
