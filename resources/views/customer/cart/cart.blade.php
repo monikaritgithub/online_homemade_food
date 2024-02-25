@@ -10,7 +10,7 @@
 
         <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js">
         </script>
-
+        @vite(['resources/css/viewproducts.css'])
     </head>
 
     <body>
@@ -24,7 +24,7 @@
                                 <div class="row">
 
                                     <div class="">
-                                        <section style="background-color: #eee;">
+                                        <section style="">
                                             <!-- <div class="container py-5">
     <div class="row">
       <div class="col">
@@ -37,7 +37,7 @@
         </nav>
       </div>
     </div> -->
-                                            <h2>Chief Details</h2>
+                                            <!-- <h2>Chief Details</h2>
 
                                             <div class="row d-flex">
                                                 <div class="col-lg-4 ">
@@ -51,13 +51,13 @@
                                                             <img src="{{ url('storage/'.$productDetails->profile_photo_path)}}"
                                                                 alt="avatar" class="rounded-circle img-fluid"
                                                                 style="width: 150px;">
-                                                            @endif
+                                                            @endif -->
 
                                                             <!-- <h5 class="my-3">{{ $productDetails->name }}</h5> -->
                                                             <!-- <p class="text-muted mb-1">Full Stack Developer</p> -->
                                                             <!-- <p class="text-muted mb-4">{{ $productDetails->location }}</p> -->
 
-                                                        </div>
+                                                        <!-- </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-8">
@@ -81,7 +81,7 @@
                                                                     <p class="text-muted mb-0">
                                                                         {{ $productDetails->email }}</p>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                             <!-- <hr>
             <div class="row">
               <div class="col-sm-3">
@@ -91,7 +91,7 @@
                 <p class="text-muted mb-0">{{ $productDetails->contactno }}</p>
               </div>
             </div> -->
-                                                            <hr>
+                                                            <!-- <hr>
                                                             <div class="row">
                                                                 <div class="col-sm-3">
                                                                     <p class="mb-0">Mobile</p>
@@ -115,133 +115,152 @@
                                                     </div>
                                                 </div>
                                         </section>
-                                    </div>
+                                    </div> -->
 
 
 
 
                                     <!-- product detail -->
                                     <h2>Product Details</h2>
-                                    <div class="">
-                                        <div class="card mb-4">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-sm-3 flex">
-                                                        <p class="mb-0">Product Name</p>
+   
 
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <p class="text-muted mb-0">{{ $productDetails->food_name }}</p>
-                                                    </div>
+
+
+
+
+
+                                    <!-- extra -->
+                                    <div class="top-header__right">
+                                        <button class="top-header__btn-cart" type="button" aria-controls="cart-section"
+                                            aria-expanded="false">
+                                            <span class="sr-only">Button cart</span>
+                                            <span class="icon icon-cart" aria-hidden="true"></span>
+                                            <span class="items-quantity">
+                                                <span class="value">0</span><span class="sr-only">items</span>
+                                            </span>
+                                        </button>
+                                        <button class="user-container" type="button" aria-label="User section">
+                                            <img src="images/image-avatar.png" alt="" class="user-container__img"
+                                                role="presentation">
+                                        </button>
+                                    </div>
+
+
+                                    </header>
+
+                                    <main>
+                                        <article class="product">
+                                            <section class="product__slider default-container"
+                                                aria-label="Product preview">
+                                                <button type="button" class="product__slider___btn-close-lightbox">
+                                                    <span class="sr-only">Close lightbox</span>
+                                                    <span class="icon icon-close" aria-hidden="true"></span>
+                                                </button>
+                                                <div class="image-box" aria-label="Product preview" role="region">
+                                                    <button type="button" class="btn-previousImage">
+                                                        <span class="sr-only">Previous Image</span>
+                                                        <span class="icon icon-previous" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn-nextImage">
+                                                        <span class="sr-only">Next Image</span>
+                                                        <span class="icon icon-next" aria-hidden="true"></span>
+                                                    </button>
+                                                    <img src="{{ url('products/'.$productDetails->food_image) }}"
+                                                        alt="Brown and white sneaker" class="image-box__src"
+                                                        data-product-id="item-cart-1" tabindex="0"
+                                                        aria-controls="lightbox" aria-expanded="false">
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0">Image</p>
+
+                                            </section>
+                                            <section class="product__content default-container"
+                                                aria-label="Product content">
+                                                <header>
+                                                    <h2 class="company-name" tabindex="0">{{ $productDetails->name }}
+                                                    </h2>
+                                                    <p class="product__name" tabindex="0">Autumn Limited Edition
+                                                        Sneakers</p>
+                                                    <h3 class="product__title" tabindex="0">
+                                                        {{ $productDetails->food_name }}</h3>
+                                                </header>
+                                                <p class="product__description" tabindex="0">
+                                                    {{ $productDetails->food_descriptions }}
+                                                </p>
+                                                <p class="product__description" tabindex="0">
+                                                Category: {{ $productDetails->category_tag }}
+                                                </p>
+                                                <div class="product__price">
+                                                    <div class="discount-price">
+                                                        <p class="discount-price__value" tabindex="0">
+                                                            Rs. {{ $productDetails->food_price }}
+                                                            <span class="sr-only">dollars</span>
+                                                        </p>
+                                                        <p class="discount-price__discount" tabindex="0">30%</p>
                                                     </div>
-                                                    <div class="col-sm-9">
-                                                        <img src="{{ url('products/'.$productDetails->food_image) }}"
-                                                            class="card-img-top" alt="Product 1"
-                                                            style="height: 200px; width: 300px;">
-                                                    </div>
-                                                </div>
-                                                <!-- <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ $productDetails->contactno }}</p>
-              </div>
-            </div> -->
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0">Description</p>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <p class="text-muted mb-0">
-                                                            {{ $productDetails->food_descriptions }}</p>
-                                                    </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0">Category</p>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <p class="text-muted mb-0">{{ $productDetails->category_tag }}
+                                                    <div class="full-price">
+                                                        <p tabindex="0">
+                                                            Rs. {{ $productDetails->food_price+100 }}
+                                                            <span class="sr-only">dollars</span>
                                                         </p>
                                                     </div>
-                                                </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0">Status</p>
+                                                    @if($productDetails->is_available == 0)
+                                                    <div class="alert alert-danger" role="alert">
+                                                        product is out of stock add to cart we will notify you later
+                                                        when it availllable
                                                     </div>
-                                                    <div class="col-sm-9">
-                                                        <p class="text-muted mb-0">
-                                                            @if($productDetails->is_available == 1)
-                                                            Available
-                                                            @else
-                                                            Not Available
+                                                    <button type="button" class="cart-form__add-btn">
+                                                        <span class="icon icon-cart m-auto pr-0"
+                                                            aria-hidden="true"></span>
+                                                        Add to cart
+                                                    </button>
+                                                    @else
+                                                    <div class="cart-form">
+                                                        <button id="payment-button" class="text-center khalti-button">
+                                                            <img src="{{ url('icons/khalti.png') }}" alt="Khalti">
+                                                        </button>
+
+                                                        <form id="order-form" method="post"
+                                                            action="{{ route('orders.create') }}">
+                                                            @csrf
+                                                            @if(Auth::check())
+                                                            <input type="hidden" name="customer_id"
+                                                                value="{{ Auth::user()->id }}">
                                                             @endif
-                                                        </p>
+                                                            <input type="hidden" name="chef_id"
+                                                                value="{{ $productDetails->chief_id }}">
+                                                            <input type="hidden" name="product_id"
+                                                                value="{{ $productDetails->product_id }}">
+                                                            <input type="hidden" name="payment_method" value="Cash">
+                                                            <input type="hidden" name="payment_status" value="0">
+                                                            <input type="hidden" name="price"
+                                                                value="{{ $productDetails->food_price }}">
+                                                            <!-- Add other hidden fields as needed -->
+
+                                                            @if(Auth::check())
+                                                            <button type="submit" id="" class="payment-button">Order
+                                                                with
+                                                                Cash</button>
+                                                            @else
+                                                            <button type="button" id="login" class="payment-button"
+                                                                onclick="redirectToLogin()">Order with
+                                                                Cash</button>
+                                                            @endif
+                                                        </form>
+
                                                     </div>
+
+                                                    @endif
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <p class="mb-0">Price</p>
-                                                    </div>
-                                                    <div class="col-sm-9">
-                                                        <p class="text-muted mb-0">{{ $productDetails->food_price }}</p>
-                                                    </div>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                            </section>
+                                        </article>
+                                    </main>
+
+                                    <div class="lightbox" id="lightbox" role="dialog"></div>
 
 
 
 
-
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p class="mb-0">Payment Method</p>
-                                        </div>
-                                        <div class="col-sm-9 d-flex">
-                                            <button id="payment-button" class="text-center khalti-button">
-                                                <img src="{{ url('icons/khalti.png') }}" alt="Khalti">
-                                            </button>
-
-                                            <form id="order-form" method="post" action="{{ route('orders.create') }}">
-                                                @csrf
-                                                @if(Auth::check())
-                                                <input type="hidden" name="customer_id" value="{{ Auth::user()->id }}">
-                                                @endif
-                                                <input type="hidden" name="chef_id"
-                                                    value="{{ $productDetails->chief_id }}">
-                                                <input type="hidden" name="product_id"
-                                                    value="{{ $productDetails->product_id }}">
-                                                <input type="hidden" name="payment_method" value="Cash">
-                                                <input type="hidden" name="payment_status" value="0">
-                                                <input type="hidden" name="price"
-                                                    value="{{ $productDetails->food_price }}">
-                                                <!-- Add other hidden fields as needed -->
-
-                                                @if(Auth::check())
-                                                <button type="submit" id="" class="payment-button">Order with
-                                                    Cash</button>
-                                                @else
-                                                <button type="button" id="login" class="payment-button" onclick="redirectToLogin()">Order with
-                                                    Cash</button>
-                                                @endif
-                                            </form>
-
-                                        </div>
-                                    </div>
 
 
 

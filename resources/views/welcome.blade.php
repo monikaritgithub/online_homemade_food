@@ -176,17 +176,17 @@
                     <img src="{{ url('welcome/chef.png') }}" alt="chef" />
                 </div>
                 <div class="chef__content">
-                    <h2 class="section__header">Cooked By The Best Chefs In The World</h2>
+                    <h2 class="section__header">Cooked By The Best Chefs In Your Area</h2>
                     <p class="section__description">
-                        Experience culinary excellence crafted by master chefs from around
-                        the globe. Our team of culinary virtuosos brings together expertise,
+                        Experience culinary excellence crafted by home chefs from around
+                        your area. Our team of culinary virtuosos brings together expertise,
                         innovation, and passion to create unforgettable dining experiences
                         that redefine gastronomy.
                     </p>
                     <ul class="chef__list">
                         <li>
                             <span><i class="ri-checkbox-fill"></i></span>
-                            Savour culinary brilliance from master chefs worldwide.
+                            Savour culinary brilliance from home chefs .
                         </li>
                         <li>
                             <span><i class="ri-checkbox-fill"></i></span>
