@@ -16,39 +16,39 @@
 
   <body>
     <div class="container">
-      
-    <!-- Analytics Dashboard -->
-    <div class="analytics">
-      <h1 class="heading">Analytics Dashboard </h1><span class="month-label">Month: <select id="monthSelector"
-          class="dropbtn">
-          <option value="allMonths" selected>All Months</option> <!-- Default selected option -->
-          <option value="january">January</option>
-          <option value="february">February</option>
-          <!-- Add other months here -->
-        </select></span>
-   
 
-    </div>
+      <!-- Analytics Dashboard -->
+      <div class="analytics">
+        <h1 class="heading">Analytics Dashboard </h1><span class="month-label">Month: <select id="monthSelector"
+            class="dropbtn">
+            <option value="allMonths" selected>All Months</option> <!-- Default selected option -->
+            <option value="january">January</option>
+            <option value="february">February</option>
+            <!-- Add other months here -->
+          </select></span>
 
 
-    </h1>
-    <div class="cards">
-      <div class="card">
-        <h2>Total Sales</h2>
-        <p class="amount">500</p>
-        <p class="increment">+10%</p>
       </div>
-      <div class="card">
-        <h2>Cash</h2>
-        <p class="amount">300K</p>
-        <p class="decrement">-5%</p>
+
+
+      </h1>
+      <div class="cards">
+        <div class="card">
+          <h2>Total Sales</h2>
+          <p class="amount">500</p>
+          <p class="increment">+10%</p>
+        </div>
+        <div class="card">
+          <h2>Cash</h2>
+          <p class="amount">300K</p>
+          <p class="decrement">-5%</p>
+        </div>
+        <div class="card">
+          <h2>Khalti</h2>
+          <p class="amount">200K</p>
+          <p class="increment">+15%</p>
+        </div>
       </div>
-      <div class="card">
-        <h2>Khalti</h2>
-        <p class="amount">200K</p>
-        <p class="increment">+15%</p>
-      </div>
-    </div>
     </div>
 
     <!-- Recent Sales -->
@@ -60,14 +60,42 @@
             <th>ID</th>
             <th>Product Name</th>
             <th>Customer Name</th>
-            <th>Amount</th>
+            <th>Amount (Rs)</th>
             <th>Payment Method</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Rows will be dynamically added via JavaScript -->
+          <tr>
+            <td>1</td>
+            <td>Roti (Indian Flatbread)</td>
+            <td>John Doe</td>
+            <td>100</td>
+            <td>Cash</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Dal (Lentil Curry)</td>
+            <td>Jane Smith</td>
+            <td>50</td>
+            <td>Khalti</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Rice</td>
+            <td>Alice Johnson</td>
+            <td>40</td>
+            <td>Cash</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Sabzi (Mixed Vegetables)</td>
+            <td>Bob Brown</td>
+            <td>60</td>
+            <td>Khalti</td>
+          </tr>
         </tbody>
       </table>
+
     </div>
 
     <!-- Top Selling Product -->
@@ -78,11 +106,30 @@
           <tr>
             <th>Product</th>
             <th>Quantity</th>
-            <th>Total Amount Generated</th>
+            <th>Total Amount Generated (Rs)</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Rows will be dynamically added via JavaScript -->
+          <tr>
+            <td>Roti (Indian Flatbread)</td>
+            <td>20 pieces</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>Dal (Lentil Curry)</td>
+            <td>1 kg</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Rice</td>
+            <td>2 kg</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <td>Sabzi (Mixed Vegetables)</td>
+            <td>1 kg</td>
+            <td>60</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -99,9 +146,29 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Rows will be dynamically added via JavaScript -->
+          <tr>
+            <td>Alice</td>
+            <td>50</td>
+            <td>5000 Rs</td>
+          </tr>
+          <tr>
+            <td>Bob</td>
+            <td>30</td>
+            <td>3000 Rs</td>
+          </tr>
+          <tr>
+            <td>Charlie</td>
+            <td>40</td>
+            <td>4000 Rs</td>
+          </tr>
+          <tr>
+            <td>Daniel</td>
+            <td>35</td>
+            <td>3500 Rs</td>
+          </tr>
         </tbody>
       </table>
+
     </div>
     </div>
 
