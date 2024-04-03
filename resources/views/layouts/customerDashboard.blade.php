@@ -188,7 +188,7 @@
                         <a class="dropdown-item" href="{{ route('customer.viewProduct') }}">All Location</a>
                     </div>
                 </div>
-                <a href="#">Cart</a>
+                <a href="{{ route('customer.viewMyCartProduct') }}">Cart</a>
                 <a href="#">My Order</a>
                 <a href="#">Payments</a>
                 <div class="dropdown">

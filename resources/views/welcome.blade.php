@@ -221,7 +221,7 @@
                                     dish is a masterpiece, bursting with flavor and freshness.
                                 </p>
                                 <img src="{{ url('welcome/client-1.jpg') }}" alt="client" />
-                                <h4>Smriti Bhandari</h4>
+                                <h4>Nimo Khanal</h4>
                                 <h5>Business Executive</h5>
                             </div>
                         </div>
