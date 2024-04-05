@@ -189,7 +189,7 @@
                     </div>
                 </div>
                 <a href="{{ route('customer.viewMyCartProduct') }}">Cart</a>
-                <a href="#">My Order</a>
+                <a href="/customer/orders">My Order</a>
                 <a href="#">Payments</a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" id="productsDropdown" role="button" data-bs-toggle="dropdown"

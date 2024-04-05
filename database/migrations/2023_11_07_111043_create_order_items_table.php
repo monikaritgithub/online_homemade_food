@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orderitems', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('order_id')->unique();
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('chef_id');
             $table->unsignedBigInteger('food_id');
-            $table->unsignedBigInteger('order_by');
-            $table->unsignedBigInteger('order_to');
-            $table->integer('quantity');
-            $table->decimal('total_price', 8, 2); // Example: 12345.67
+            $table->string('payment_method');
+            $table->boolean('payment_status')->default(false);
+            $table->decimal('price', 10, 2);
             $table->timestamps();
 
             // Define foreign key constraints

@@ -103,7 +103,7 @@ Route::put('/orders/{orderId}/update-status/{status}', [OrderController::class, 
 Route::get('/orders/{orderId}', [OrderController::class, 'viewOrder'])->name('customer.view');
 
 // Route to view a user's order history
-Route::get('/user/{userId}/orders', [OrderController::class, 'viewUserOrders'])->name('customer.orders');
+Route::get('/customer/orders', [OrderController::class, 'showOrders'])->name('customer.orders');
 Route::get('/admin/{userId}/orders', [OrderController::class, 'viewAdminOrders'])->name('admin.orders');
 
 

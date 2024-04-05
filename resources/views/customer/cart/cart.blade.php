@@ -234,7 +234,7 @@
                                                             @endif
                                                             <input type="hidden" name="chef_id"
                                                                 value="{{ $productDetails->chief_id }}">
-                                                            <input type="hidden" name="product_id"
+                                                            <input type="hidden" name="food_id"
                                                                 value="{{ $productDetails->product_id }}">
                                                             <input type="hidden" name="payment_method" value="Cash">
                                                             <input type="hidden" name="payment_status" value="0">
