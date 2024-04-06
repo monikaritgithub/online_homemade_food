@@ -23,6 +23,18 @@
         <div class="py-3 py-md-5 bg-light ">
             <div class="p-10">
                 <div class=" container">
+                @if(session('success_message'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success_message') }}
+        
+    </div>
+    <script>
+        // Automatically close the success message after 3 seconds
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 2000);
+    </script>
+@endif
                     <div class="heading">
                         <h1 class="title"><span class="part1">Our secret ingredient</span> is the
                             <h1 class="title">love of <span class="subtext">housewives turned chefs.</span></h1>

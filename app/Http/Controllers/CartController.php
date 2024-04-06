@@ -58,7 +58,8 @@ class CartController extends Controller
             'product_id' => $request->input('product_id'),
             // Add other fields as needed
         ]);
-
+        $product_name = Product::where('id', $request->input('product_id'))->first()->food_name;
+        session()->flash('success_message', 'The product '.$product_name.' has been added to your cart successfully!');
         $products = Product::all(); 
         return view('customer.products.index', ['products' => $products,'searchTerm' => $searchTerm]);
     }

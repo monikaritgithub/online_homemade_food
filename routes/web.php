@@ -6,6 +6,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\OrderController;
 
+use App\Http\Controllers\PaymentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -117,6 +119,12 @@ Route::get('/admin/{userId}/orders', [OrderController::class, 'viewAdminOrders']
 // get product details with customer info
 Route::get('/admin/product/{id}', [ProductController::class, 'viewProductDetailAdmin'])->name('admin.viewProductDetails');
 
+
+
+
+Route::post('/khalti/payment/verify',[PaymentController::class,'verifyPayment'])->name('khalti.verifyPayment');
+
+Route::post('/khalti/payment/store',[PaymentController::class,'storePayment'])->name('khalti.storePayment');
 
 
 

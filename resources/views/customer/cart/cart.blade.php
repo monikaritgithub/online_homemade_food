@@ -14,109 +14,30 @@
     </head>
 
     <body>
+
         <section class="h-100 h-custom" style="background-color: #eee; container">
             <div class=" py-5 h-100 container">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col">
                         <div class="card">
+                        @if(session('success_message'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success_message') }}
+        
+    </div>
+    <script>
+        // Automatically close the success message after 3 seconds
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 2000);
+    </script>
+@endif
                             <div class="card-body p-4">
 
                                 <div class="row">
 
                                     <div class="">
                                         <section style="">
-                                            <!-- <div class="container py-5">
-    <div class="row">
-      <div class="col">
-        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">User</a></li>
-            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-          </ol>
-        </nav>
-      </div>
-    </div> -->
-                                            <!-- <h2>Chief Details</h2>
-
-                                            <div class="row d-flex">
-                                                <div class="col-lg-4 ">
-                                                    <div class="card mb-4 ">
-                                                        <div class="card-body text-center">
-                                                            @if(is_null($productDetails->profile_photo_path))
-                                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                                                                alt="avatar" class="rounded-circle img-fluid"
-                                                                style="width: 150px;">
-                                                            @else
-                                                            <img src="{{ url('storage/'.$productDetails->profile_photo_path)}}"
-                                                                alt="avatar" class="rounded-circle img-fluid"
-                                                                style="width: 150px;">
-                                                            @endif -->
-
-                                                            <!-- <h5 class="my-3">{{ $productDetails->name }}</h5> -->
-                                                            <!-- <p class="text-muted mb-1">Full Stack Developer</p> -->
-                                                            <!-- <p class="text-muted mb-4">{{ $productDetails->location }}</p> -->
-
-                                                        <!-- </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8">
-                                                    <div class="card mb-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <p class="mb-0">Full Name</p>
-                                                                </div>
-                                                                <div class="col-sm-9">
-                                                                    <p class="text-muted mb-0">
-                                                                        {{ $productDetails->name }}</p>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <p class="mb-0">Email</p>
-                                                                </div>
-                                                                <div class="col-sm-9">
-                                                                    <p class="text-muted mb-0">
-                                                                        {{ $productDetails->email }}</p>
-                                                                </div>
-                                                            </div> -->
-                                                            <!-- <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Phone</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">{{ $productDetails->contactno }}</p>
-              </div>
-            </div> -->
-                                                            <!-- <hr>
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <p class="mb-0">Mobile</p>
-                                                                </div>
-                                                                <div class="col-sm-9">
-                                                                    <p class="text-muted mb-0">
-                                                                        {{ $productDetails->contactno }}</p>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <div class="row">
-                                                                <div class="col-sm-3">
-                                                                    <p class="mb-0">Address</p>
-                                                                </div>
-                                                                <div class="col-sm-9">
-                                                                    <p class="text-muted mb-0">
-                                                                        {{ $productDetails->location }}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </section>
-                                    </div> -->
-
 
 
 
@@ -237,7 +158,7 @@
                                                             <input type="hidden" name="food_id"
                                                                 value="{{ $productDetails->product_id }}">
                                                             <input type="hidden" name="payment_method" value="Cash">
-                                                            <input type="hidden" name="payment_status" value="0">
+                                                            <input type="hidden" name="payment_status" value="pending">
                                                             <input type="hidden" name="price"
                                                                 value="{{ $productDetails->food_price }}">
                                                             <!-- Add other hidden fields as needed -->
@@ -279,10 +200,10 @@
                                     <script>
                                         var config = {
                                             // replace the publicKey with yours
-                                            "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
-                                            "productIdentity": "1234567890",
-                                            "productName": "Dragon",
-                                            "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+                                            "publicKey": "test_public_key_7105356e1f1b4e8fb07304f6fd73cc3b",
+                                            "productIdentity": "{{ $productDetails->product_id }}",
+                                            "productName": "{{ $productDetails->food_name }}",
+                                            "productUrl": "http://127.0.0.1:8000/customer/cart/{{ $productDetails->product_id }}",
                                             "paymentPreference": [
                                                 "KHALTI",
                                                 "EBANKING",
@@ -291,17 +212,40 @@
                                                 "SCT",
                                             ],
                                             "eventHandler": {
-                                                onSuccess(payload) {
-                                                    // hit merchant api for initiating verfication
-                                                    console.log(payload);
-                                                },
-                                                onError(error) {
-                                                    console.log(error);
-                                                },
-                                                onClose() {
-                                                    console.log('widget is closing');
-                                                }
-                                            }
+                    onSuccess (payload) {
+                        // hit merchant api for initiating verfication
+                        $.ajax({
+                            type : 'POST',
+                            url : "{{ route('khalti.verifyPayment') }}",
+                            data: {
+                                token : payload.token,
+                                amount : payload.amount,
+                                "_token" : "{{ csrf_token() }}"
+                            },
+                            success : function(res){
+                                $.ajax({
+                                    type : "POST",
+                                    url : "{{ route('khalti.storePayment') }}",
+                                    data : {
+                                        response : res,
+                                        "_token" : "{{ csrf_token() }}"
+                                    },
+                                    success: function(res){
+                                        console.log('transaction successfull');
+                                    }
+                                });
+                                console.log(res);
+                            }
+                        });
+                        console.log(payload);
+                    },
+                    onError (error) {
+                        console.log(error);
+                    },
+                    onClose () {
+                        console.log('widget is closing');
+                    }
+                }
                                         };
 
                                         var checkout = new KhaltiCheckout(config);
@@ -363,6 +307,14 @@
 
 
         </section>
+        <script>
+    // Automatically close the success message after 3 seconds
+    $(document).ready(function(){
+        setTimeout(function() {
+            $(".alert").fadeOut();
+        }, 3000);
+    });
+</script>
 
     </body>
 

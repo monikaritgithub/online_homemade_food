@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27c56e94486c16606f56cfa8efb4b18b",
+    "content-hash": "575ca8870e0071d29c59ffc69e2cd8d2",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3600,6 +3600,47 @@
                 }
             ],
             "time": "2023-11-08T05:53:05+00:00"
+        },
+        {
+            "name": "snlbaral/khalti-api",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/snlbaral/khalti-api.git",
+                "reference": "40d017cc2f14960ea0dafc07e91fe9dbd9a4e9eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/snlbaral/khalti-api/zipball/40d017cc2f14960ea0dafc07e91fe9dbd9a4e9eb",
+                "reference": "40d017cc2f14960ea0dafc07e91fe9dbd9a4e9eb",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Snlbaral\\Khalti\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Sunil Baral"
+                }
+            ],
+            "description": "Khalti API for PHP.",
+            "homepage": "https://github.com/snlbaral/khalti-api",
+            "keywords": [
+                "api",
+                "khalti",
+                "payment",
+                "snlbaral"
+            ],
+            "support": {
+                "email": "support@jcloudia.com",
+                "issues": "https://github.com/snlbaral/khalti-api/issues",
+                "source": "https://github.com/snlbaral/khalti-api/tree/1.0.1"
+            },
+            "time": "2021-05-03T12:56:48+00:00"
         },
         {
             "name": "symfony/console",
