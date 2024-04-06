@@ -23,12 +23,13 @@ class OrderController extends Controller
     
         // Set the 'customer_id' to the authenticated user's ID if authenticated, else set it to -1
         $validatedData['customer_id'] = Auth::check() ? Auth::id() : -1;
-    
+        session()->flash('success_message', 'Your order has been placed successfully!');
+
         // Create the order
         OrderItem::create($validatedData);
         $searchTerm = session('searchTerm');
         $products = Product::all(); 
-        return view('customer.products.index', ['products' => $products,'searchTerm' => $searchTerm]);
+        return redirect('/customer/cart/'.$validatedData['food_id']);
     }
 
     public function showOrders()
@@ -45,12 +46,15 @@ class OrderController extends Controller
             $orderData[] = [
                 'id' => $order->id,
                 'food_id' => $order->food_id,
+                'chef_id' => $order->chef_id,
                 'chef_name' => $chef ? $chef->name : 'Unknown Chef',
                 'food_name' => $food ? $food->food_name : 'Unknown Food',
                 'food_image' => $food ? $food->food_image : null,
                 'payment_method' => $order->payment_method,
                 'payment_status' => $order->payment_status,
+                'status' => $order->status,
                 'price' => $order->price,
+                'created_at' => $order->created_at,
             ];
         }
 

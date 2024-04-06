@@ -17,8 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('chef_id');
             $table->unsignedBigInteger('food_id');
             $table->string('payment_method');
-            $table->boolean('payment_status')->default(false);
+            $table->string('payment_status')->default('pending');
+            $table->integer('quantity')->default(1);
             $table->decimal('price', 10, 2);
+            $table->string('status')->default(0);
             $table->timestamps();
 
             // Define foreign key constraints
