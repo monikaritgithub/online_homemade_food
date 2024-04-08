@@ -235,7 +235,12 @@
                 "_token" : "{{ csrf_token() }}"
             },
             success: function(res){
+                $('#order-form input[name="payment_method"]').val("Khalti");
+                                $('#order-form input[name="payment_status"]').val("Paid");
+                                // Submit the form
+                                $('#order-form').submit();
                 console.log('transaction successfull');
+               
             }
         });
         console.log(jsonResponse);

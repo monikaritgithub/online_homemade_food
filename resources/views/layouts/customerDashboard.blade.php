@@ -190,7 +190,7 @@
                 </div>
                 <a href="{{ route('customer.viewMyCartProduct') }}">Cart</a>
                 <a href="/customer/orders">My Order</a>
-                <a href="#">Payments</a>
+                <a href="/payments">Payments</a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" id="productsDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">{{ Auth::user()->name }}</a>
