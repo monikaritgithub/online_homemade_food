@@ -5,27 +5,39 @@
 @section('content')
 <div class="container">
     <h1 class="mb-4">My Payments</h1>
-    <div class="row">
-        @forelse ($payments as $payment)
-        <div class="col-md-6">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Payment Txn Id: {{ $payment->transaction_id }}</h5>
-                    <p class="card-text">Product Name: {{ $payment->food_name }}</p> <!-- Use food_name instead of product->name -->
-                    <p class="card-text">Amount: {{ $payment->amount }}</p>
-                    <p class="card-text">Payment Date: {{ $payment->created_at->format('M d, Y H:i:s') }}</p>
-                    <p class="card-text">Paid By: {{ $payment->paid_by }}</p>
-                    <p class="card-text">Status: {{ $payment->status }}</p>
-                    <p class="card-text">Payment Type: {{ $payment->payment_type }}</p>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Payment Txn Id</th>
+                    <th>Product Name</th>
+                    <th>Amount</th>
+                    <th>Payment Date</th>
+                    <th>Paid By</th>
+                    <th>Status</th>
+                    <th>Payment Type</th>
+                    <!-- Add more headers as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($payments as $payment)
+                <tr>
+                    <td>{{ $payment->transaction_id }}</td>
+                    <td>{{ $payment->food_name }}</td> <!-- Use food_name instead of product->name -->
+                    <td>{{ $payment->amount }}</td>
+                    <td>{{ $payment->created_at->format('M d, Y H:i:s') }}</td>
+                    <td>{{ $payment->paid_by }}</td>
+                    <td>{{ $payment->status }}</td>
+                    <td>{{ $payment->payment_type }}</td>
                     <!-- Add more payment details as needed -->
-                </div>
-            </div>
-        </div>
-        @empty
-        <div class="col-md-12">
-            <p>No payments found.</p>
-        </div>
-        @endforelse
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="7">No payments found.</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

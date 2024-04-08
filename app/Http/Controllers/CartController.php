@@ -95,8 +95,10 @@ class CartController extends Controller
     
         // Calculate the sum of product prices
         $totalPrice = $cartItems->sum('food_price');
+        $totalCartItems = $cartItems->count();
     
-        return view('customer.cart.myCart', compact('cartItems', 'totalPrice'));
+        // return view('customer.cart.myCart', compact('cartItems', 'totalPrice'));
+        return view('customer.cart.cartDetails', compact('cartItems', 'totalPrice','totalCartItems'));
     
         
     }
