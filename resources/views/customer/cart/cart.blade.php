@@ -215,28 +215,33 @@
                     onSuccess (payload) {
                         // hit merchant api for initiating verfication
                         $.ajax({
-                            type : 'POST',
-                            url : "{{ route('khalti.verifyPayment') }}",
-                            data: {
-                                token : payload.token,
-                                amount : payload.amount,
-                                "_token" : "{{ csrf_token() }}"
-                            },
-                            success : function(res){
-                                $.ajax({
-                                    type : "POST",
-                                    url : "{{ route('khalti.storePayment') }}",
-                                    data : {
-                                        response : res,
-                                        "_token" : "{{ csrf_token() }}"
-                                    },
-                                    success: function(res){
-                                        console.log('transaction successfull');
-                                    }
-                                });
-                                console.log(res);
-                            }
-                        });
+    type : 'POST',
+    url : "{{ route('khalti.verifyPayment') }}",
+    data: {
+        token : payload.token,
+        amount : payload.amount,
+        "_token" : "{{ csrf_token() }}"
+    },
+    success : function(res){
+        // Parse JSON response
+        var jsonResponse = JSON.parse(res);
+
+        // Send parsed response to storePayment endpoint
+        $.ajax({
+            type : "POST",
+            url : "{{ route('khalti.storePayment') }}",
+            data : {
+                response : jsonResponse, // Send parsed response
+                "_token" : "{{ csrf_token() }}"
+            },
+            success: function(res){
+                console.log('transaction successfull');
+            }
+        });
+        console.log(jsonResponse);
+    }
+});
+
                         console.log(payload);
                     },
                     onError (error) {

@@ -126,6 +126,7 @@ Route::post('/khalti/payment/verify',[PaymentController::class,'verifyPayment'])
 
 Route::post('/khalti/payment/store',[PaymentController::class,'storePayment'])->name('khalti.storePayment');
 
+Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
 
 
 
