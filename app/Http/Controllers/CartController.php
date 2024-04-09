@@ -76,10 +76,23 @@ class CartController extends Controller
     return redirect()->route('customer.viewMyCartProduct')->with('success', 'Product deleted successfully');
     }
 
-    public function clearCart($userId)
-    {
-        // Logic to clear all items from the user's shopping cart
+    public function clearCart()
+{
+    $userId = Auth::id();
+    try {
+        // Delete cart items associated with the user ID
+        Cart::where('customer_id', $userId)->delete();
+        
+        // Return true to indicate success
+        return redirect('/customer/orders');
+    } catch (\Exception $e) {
+        // Log the error or handle it as needed
+        \Log::error('Error clearing cart: ' . $e->getMessage());
+        
+        // Return false to indicate failure
+        return false;
     }
+}
 
     public function myCart()
     {

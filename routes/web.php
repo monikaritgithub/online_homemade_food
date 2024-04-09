@@ -88,7 +88,8 @@ Route::get('/customer/mycart', [CartController::class, 'myCart'])->name('custome
 Route::post('/customer/delete-mycart/{id}', [CartController::class, 'removeFromCart'])->name('customer.deleteMyCartProduct');
 Route::get('/customer/delete-mycart/{id}', [CartController::class, 'removeFromCart'])->name('customer.deleteMyCartProduct');
 Route::delete('/customer/delete-mycart/{id}', [CartController::class, 'removeFromCart'])->name('customer.deleteMyCartProduct');
-
+Route::get('/customer/clear-mycart', [CartController::class, 'clearCart'])->name('customer.clearMyCart');
+Route::delete('/customer/clear-mycart', [CartController::class, 'clearCart'])->name('customer.clearMyCart');
 
 // FOR ORDER ITEMS
 // Route to create a new order
