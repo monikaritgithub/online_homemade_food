@@ -23,7 +23,21 @@
                 @forelse ($payments as $payment)
                 <tr>
                     <td>{{ $payment->transaction_id }}</td>
-                    <td>{{ $payment->food_name }}</td> <!-- Use food_name instead of product->name -->
+                    <td>
+                        @if (strpos($payment->product_id, ',') !== false)
+                            @php
+                                $productIds = explode(',', $payment->product_id);
+                                $productNames = [];
+                                foreach ($productIds as $productId) {
+                                    $productName = App\Models\Product::find($productId)->food_name;
+                                    $productNames[] = $productName;
+                                }
+                                echo implode(', ', $productNames);
+                            @endphp
+                        @else
+                            {{ $payment->food_name }}
+                        @endif
+                    </td> <!-- Use food_name instead of product->name -->
                     <td>{{ $payment->amount }}</td>
                     <td>{{ $payment->created_at->format('M d, Y H:i:s') }}</td>
                     <td>{{ $payment->paid_by }}</td>

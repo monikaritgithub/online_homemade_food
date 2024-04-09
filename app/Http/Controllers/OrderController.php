@@ -60,5 +60,37 @@ class OrderController extends Controller
 
         return view('customer.orders.showOrders', ['orders' => $orderData]);
     }
+
+    public function createCartOrder(Request $request)
+{
+    // Validate the form data if necessary
+    $validatedData = $request->validate([
+        // Add validation rules here if needed
+    ]);
+
+    // Retrieve cart items from the request
+    $cartItems = $request->input('cart');
+
+    // Loop through cart items and create an order for each item
+    foreach ($cartItems as $cartItem) {
+        $order = new OrderItem();
+        $order->customer_id = $cartItem['customer_id'];
+        $order->chef_id = $cartItem['chef_id'];
+        $order->food_id = $cartItem['product_id'];
+        $order->payment_method = $cartItem['payment_method'];
+        $order->payment_status = $cartItem['payment_status'];
+        $order->price = $cartItem['price'];
+        
+        // Save the order to the database
+        $order->save();
+    }
+
+    // Flash success message
+    session()->flash('success_message', 'Your order has been placed successfully!');
+
+    // Redirect back to cart or any other page as needed
+    return redirect('/customer/clear-mycart/');
+}
+
       
 }
