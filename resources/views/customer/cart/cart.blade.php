@@ -200,7 +200,7 @@
                                     <script>
                                         var config = {
                                             // replace the publicKey with yours
-                                            "publicKey": "test_public_key_7105356e1f1b4e8fb07304f6fd73cc3b",
+                                            "publicKey": "test_public_key_168a8ceb8f384e6ab62740da9f90d8c0",
                                             "productIdentity": "{{ $productDetails->product_id }}",
                                             "productName": "{{ $productDetails->food_name }}",
                                             "productUrl": "http://127.0.0.1:8000/customer/cart/{{ $productDetails->product_id }}",
