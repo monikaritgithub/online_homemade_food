@@ -86,6 +86,8 @@
                                                         value='{{Auth::user()->name }}'>
                                                     <input type="hidden" name="chef_id" value='{{$product->chief_id}}'>
                                                     <input type="hidden" name="product_id" value='{{$product->id}}'>
+                                                    <input type="hidden" name="quantity" value='1'>
+
                                                     <button class="add-to-cart w-100"
                                                         data-product-id="1" type="submit">Add to Cart</button>
                                                 </form>

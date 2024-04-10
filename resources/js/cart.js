@@ -76,3 +76,40 @@ if (document.querySelector('.product-swiper')) {
         productSwiper.slidePrev();
     })
 }
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var quantityInput = document.getElementById("quantity");
+    
+    quantityInput.addEventListener("input", function() {
+        var currentValue = parseInt(quantityInput.value);
+        
+        if (isNaN(currentValue) || currentValue < 1) {
+            quantityInput.value = 1; // Ensure minimum quantity is 1
+        } else if (currentValue > 5) {
+            quantityInput.value = 5; // Ensure maximum quantity is 5
+        }
+        
+        // Here you can add any additional logic you need, such as updating the cart or making an AJAX request to update the quantity on the server.
+    });
+});
+
+function decreaseQuantity() {
+    var quantityInput = document.getElementById("quantity");
+    var currentValue = parseInt(quantityInput.value);
+    if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+        // Here you can add any additional logic you need, such as updating the cart or making an AJAX request to update the quantity on the server.
+    }
+}
+
+function increaseQuantity() {
+    var quantityInput = document.getElementById("quantity");
+    var currentValue = parseInt(quantityInput.value);
+    if (currentValue < 5) { // Assuming max quantity is 5
+        quantityInput.value = currentValue + 1;
+        // Here you can add any additional logic you need, such as updating the cart or making an AJAX request to update the quantity on the server.
+    }
+}

@@ -90,7 +90,8 @@ Route::get('/customer/delete-mycart/{id}', [CartController::class, 'removeFromCa
 Route::delete('/customer/delete-mycart/{id}', [CartController::class, 'removeFromCart'])->name('customer.deleteMyCartProduct');
 Route::get('/customer/clear-mycart', [CartController::class, 'clearCart'])->name('customer.clearMyCart');
 Route::delete('/customer/clear-mycart', [CartController::class, 'clearCart'])->name('customer.clearMyCart');
-
+Route::put('/cart/{cartItemId}', [CartController::class, 'updateCartItemQuantity'])
+    ->name('cart.update.quantity');
 // FOR ORDER ITEMS
 // Route to create a new order
 // Route::get('/orders/create', [OrderController::class, 'createOrder'])->name('orders.create');

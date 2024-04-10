@@ -104,6 +104,7 @@ $user_name = Auth::user()->name;
                                                 <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
                                                     <p class="text-muted mb-0">{{ $order['food_name'] }}</p>
                                                 </div>
+                                              
                                                 <div class="col-md-3 text-center d-flex justify-content-center align-items-center">
                                                     <p class="text-muted mb-0">Payment Method: {{ $order['payment_method'] }}</p>
                                                 </div>
@@ -125,8 +126,10 @@ $user_name = Auth::user()->name;
                                                         <p class="text-muted mb-0">Delivered</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 text-end">
-                                                    <p class="text-muted mb-0">Price: Rs {{ number_format($order['price'], 2) }}</p>
+                                                <div class="col-md-6 text-end flex">
+                                                    <p class="text-muted  mb-0  ">Quantity: {{ $order['quantity'] }}</p>
+                                                
+                                                    <p class="text-muted mb-0 ">Price: Rs {{ number_format($order['price'], 2) }}</p>
                                                 </div>
                                             </div>
                                         </div>
