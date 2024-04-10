@@ -11,6 +11,7 @@
         <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js">
         </script>
         @vite(['resources/css/viewproducts.css'])
+
     </head>
 
     <body>
@@ -90,6 +91,17 @@
                                                         alt="Brown and white sneaker" class="image-box__src"
                                                         data-product-id="item-cart-1" tabindex="0"
                                                         aria-controls="lightbox" aria-expanded="false">
+
+                                                        <div class="input-group quantity-control mt-5">
+    <div class="input-group-prepend">
+        <button type="button" class="btn btn-outline-secondary" onclick="changeQuantity(-1)">-</button>
+    </div>
+    <input type="number" class="form-control input-quantity text-center" name="quantity" min="1" max="5" value="1" readonly>
+    <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary" onclick="changeQuantity(1)">+</button>
+    </div>
+</div>
+
                                                 </div>
 
                                             </section>
@@ -161,6 +173,8 @@
                                                             <input type="hidden" name="payment_status" value="pending">
                                                             <input type="hidden" name="price"
                                                                 value="{{ $productDetails->food_price }}">
+                                                                <input type="hidden" name="quantity" id="quantity" value="1">
+
                                                             <!-- Add other hidden fields as needed -->
 
                                                             @if(Auth::check())
@@ -280,6 +294,17 @@
                                         }
 
                                         
+                                        function changeQuantity(increment) {
+        var quantityInput = document.querySelector('.input-quantity');
+        var currentValue = parseInt(quantityInput.value);
+        var newValue = currentValue + increment;
+        
+        // Ensure the new value is within the min and max limits
+        if (newValue >= parseInt(quantityInput.min) && newValue <= parseInt(quantityInput.max)) {
+            quantityInput.value = newValue;
+            document.getElementById('quantity').value = newValue; // Update hidden input value
+        }
+    }
                                     </script>
                                     <!-- Paste this code anywhere in you body tag -->
                                     <style>

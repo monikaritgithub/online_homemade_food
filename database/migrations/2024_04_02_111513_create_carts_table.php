@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('chef_id');
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('quantity')->default(1);
             $table->timestamps();
         });
     }

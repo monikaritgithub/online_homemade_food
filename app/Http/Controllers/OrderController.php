@@ -19,6 +19,7 @@ class OrderController extends Controller
             'payment_method' => 'required',
             'payment_status' => 'required',
             'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
         ]);
     
         // Set the 'customer_id' to the authenticated user's ID if authenticated, else set it to -1
@@ -54,6 +55,7 @@ class OrderController extends Controller
                 'payment_status' => $order->payment_status,
                 'status' => $order->status,
                 'price' => $order->price,
+                'quantity' => $order->quantity,
                 'created_at' => $order->created_at,
             ];
         }
@@ -63,23 +65,19 @@ class OrderController extends Controller
 
     public function createCartOrder(Request $request)
 {
-    // Validate the form data if necessary
-    $validatedData = $request->validate([
-        // Add validation rules here if needed
-    ]);
-
     // Retrieve cart items from the request
     $cartItems = $request->input('cart');
 
     // Loop through cart items and create an order for each item
-    foreach ($cartItems as $cartItem) {
+    foreach ($cartItems as $itemId => $cartItem) {
         $order = new OrderItem();
         $order->customer_id = $cartItem['customer_id'];
         $order->chef_id = $cartItem['chef_id'];
         $order->food_id = $cartItem['product_id'];
         $order->payment_method = $cartItem['payment_method'];
         $order->payment_status = $cartItem['payment_status'];
-        $order->price = $cartItem['price'];
+        $order->quantity = $cartItem['quantity']; // Add quantity to the order
+        $order->price = $cartItem['price'] * $cartItem['quantity']; // Calculate total price based on quantity
         
         // Save the order to the database
         $order->save();

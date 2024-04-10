@@ -56,6 +56,7 @@ class CartController extends Controller
             'customer_id' => auth()->id(), // Assuming the customer is the authenticated user
             'chef_id' => $request->input('chef_id'), // Adjust this based on your data
             'product_id' => $request->input('product_id'),
+            'quantity' => $request->input('quantity'),
             // Add other fields as needed
         ]);
         $product_name = Product::where('id', $request->input('product_id'))->first()->food_name;
@@ -106,8 +107,11 @@ class CartController extends Controller
             ->where('carts.customer_id', '=', $userId)
             ->get();
     
-        // Calculate the sum of product prices
-        $totalPrice = $cartItems->sum('food_price');
+            // Calculate the total price taking into account the quantity of each item
+    $totalPrice = 0;
+    foreach ($cartItems as $item) {
+        $totalPrice += $item->food_price * $item->quantity;
+    }
         $totalCartItems = $cartItems->count();
     
         // return view('customer.cart.myCart', compact('cartItems', 'totalPrice'));
@@ -117,4 +121,23 @@ class CartController extends Controller
     }
 
     // Additional methods for updating quantities, applying discounts, etc.
+
+    public function updateCartItemQuantity(Request $request, $cartItemId)
+    {
+        // Validate the request
+        $request->validate([
+            'quantity' => 'required|integer|min:1|max:5',
+        ]);
+
+        // Find the cart item
+        $cartItem = Cart::findOrFail($cartItemId);
+
+        // Update the quantity
+        $cartItem->update([
+            'quantity' => $request->quantity,
+        ]);
+
+        // Redirect back to the previous page
+        return back()->with('success', 'Cart item quantity updated successfully.');
+    }
 }
