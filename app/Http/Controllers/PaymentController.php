@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Payment;
+use App\Models\OrderItem;
 
 class PaymentController extends Controller
 {
@@ -93,5 +95,51 @@ class PaymentController extends Controller
 
     return response()->json(['message' => 'Payment information stored successfully', 'payment_id' => $payment->id]);
 }
+
+
+// show for chef
+public function chefIndex()
+{
+    // Get currently logged-in chef id
+    $chefId = Auth::id();
+
+    // Fetch cash payments from order_items table with product, payment status, and customer name
+    $cashPayments = DB::table('order_items')
+        ->join('products', 'order_items.food_id', '=', 'products.id')
+        ->join('users', 'order_items.customer_id', '=', 'users.id')
+        ->select('order_items.*', 'products.food_name', 'users.name as customer_name')
+        ->where('order_items.payment_method', 'Cash')
+        ->where('order_items.chef_id', $chefId)
+        ->get();
+
+    // Fetch Khalti payments from payments table with product, payment status, and customer name
+    $khaltiPayments = DB::table('payments')
+        ->join('order_items', 'payments.transaction_id', '=', 'order_items.txn_id')
+        ->join('products', 'order_items.food_id', '=', 'products.id')
+        ->join('users', 'payments.customer_id', '=', 'users.id')
+        ->select('order_items.*', 'products.food_name', 'payments.*', 'users.name as customer_name')
+        ->where('order_items.chef_id', $chefId)
+        ->get();
+
+    return view('admin.payments.payments', compact('cashPayments', 'khaltiPayments'));
+}
+
+
+public function updatePaymentStatus(Request $request, $orderId)
+{
+    // Validate request
+    $request->validate([
+        'payment_status' => 'required|in:pending,paid',
+    ]);
+
+    // Update payment status
+    $order = OrderItem::findOrFail($orderId);
+    $order->payment_status = $request->payment_status;
+    $order->save();
+
+    return redirect('/chef/payments')->with('success', 'Payment status updated successfully.');
+}
+
+
 
 }

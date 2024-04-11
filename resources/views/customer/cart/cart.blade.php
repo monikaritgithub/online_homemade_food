@@ -174,7 +174,7 @@
                                                             <input type="hidden" name="price"
                                                                 value="{{ $productDetails->food_price }}">
                                                                 <input type="hidden" name="quantity" id="quantity" value="1">
-
+                                                                <input type="hidden" name="txn_id" id="txn_id" value="">
                                                             <!-- Add other hidden fields as needed -->
 
                                                             @if(Auth::check())
@@ -250,9 +250,12 @@
             },
             success: function(res){
                 $('#order-form input[name="payment_method"]').val("Khalti");
-                                $('#order-form input[name="payment_status"]').val("Paid");
+                                $('#order-form input[name="payment_status"]').val("paid");
+                                $('#order-form input[name="txn_id"]').val(jsonResponse['idx']);
+
                                 // Submit the form
                                 $('#order-form').submit();
+                                console.log(jsonResponse['idx']);
                 console.log('transaction successfull');
                
             }

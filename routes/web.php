@@ -137,9 +137,15 @@ Route::post('/khalti/payment/store',[PaymentController::class,'storePayment'])->
 
 Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
 
+// for chef
+Route::get('/chef/payments', [PaymentController::class, 'chefIndex'])->name('chef.payments');
+Route::patch('/payments/{orderId}/update-status', [PaymentController::class, 'updatePaymentStatus'])->name('update.payment.status');
 
 
 
+// chef
+Route::get('/orders', [OrderController::class, 'viewChefOrders'])->name('orders.view');
+Route::patch('/orders/{orderId}/update-status', [OrderController::class, 'updateOrderStatus'])->name('update.order.status');
 
 
 

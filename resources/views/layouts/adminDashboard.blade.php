@@ -9,6 +9,7 @@
         <!-- External Stylesheets -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
         <!-- Custom Stylesheet -->
         <style>
@@ -180,8 +181,8 @@
                     </div>
                 </div>
                 <a href="#">Cart</a>
-                <a href="#">My Order</a>
-                <a href="#">Payments</a>
+                <a href="{{ route('orders.view')}}">My Order</a>
+                <a href="{{route('chef.payments')}}">Payments</a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle" id="productsDropdown" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">{{ Auth::user()->name }}</a>

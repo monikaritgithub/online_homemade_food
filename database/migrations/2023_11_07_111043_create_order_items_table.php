@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('chef_id');
             $table->unsignedBigInteger('food_id');
             $table->string('payment_method');
+            $table->string('txn_id')->nullable();
             $table->string('payment_status')->default('pending');
             $table->integer('quantity')->default(1);
             $table->decimal('price', 10, 2);
