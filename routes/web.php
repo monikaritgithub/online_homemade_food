@@ -5,8 +5,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\PaymentController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
 /*
@@ -33,7 +35,7 @@ Route::middleware([
         $user = auth()->user(); // Get the authenticated user
 
         if ($user->role === 0) {
-            return view('/admin/adminDashboard');
+            return redirect('/admin/adminDashboard');
         } elseif ($user->role === 1) {
             return redirect('/customer/view-product-location');
                 } else {
@@ -43,7 +45,12 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
+
+
 Route::resource('products', ProductController::class);
+
+Route::get('/admin/adminDashboard', [DashboardController::class, 'index'])->name('analytics');
 
 // Route::post('/admin/add-product', 'ProductController@store')->name('admin.addProduct');
 Route::get('/admin/add-product', [ProductController::class, 'create'])->name('admin.addProduct');

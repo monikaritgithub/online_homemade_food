@@ -210,3 +210,14 @@ table td {
 .analytics {
     margin-top: 30px;
 }
+
+.scrollable-tbody {
+    max-height: 200px; /* Adjust this height according to your design */
+    overflow-y: auto;
+}
+
+
+.hidden-row {
+    display: none;
+}
+
