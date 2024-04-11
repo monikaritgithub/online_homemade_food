@@ -20,7 +20,9 @@ class OrderController extends Controller
             'payment_status' => 'required',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
+            
         ]);
+        $validatedData['txn_id'] = $request->txn_id;
     
         // Set the 'customer_id' to the authenticated user's ID if authenticated, else set it to -1
         $validatedData['customer_id'] = Auth::check() ? Auth::id() : -1;
@@ -78,7 +80,7 @@ class OrderController extends Controller
         $order->payment_status = $cartItem['payment_status'];
         $order->quantity = $cartItem['quantity']; // Add quantity to the order
         $order->price = $cartItem['price'] * $cartItem['quantity']; // Calculate total price based on quantity
-        
+        $order->txn_id = $cartItem['txn_id'];
         // Save the order to the database
         $order->save();
     }
@@ -88,6 +90,43 @@ class OrderController extends Controller
 
     // Redirect back to cart or any other page as needed
     return redirect('/customer/clear-mycart/');
+}
+
+
+
+// for chef
+public function viewChefOrders()
+{
+    // Get the currently logged-in chef
+    $chef = Auth::user();
+
+    // Fetch orders associated with the logged-in chef
+    $orders = DB::table('order_items')
+        ->join('users', 'order_items.customer_id', '=', 'users.id')
+        ->join('products', 'order_items.food_id', '=', 'products.id')
+        ->where('products.chief_id', '=', $chef->id) // Filter orders based on chef's ID
+        ->select('order_items.*', 'users.name as customer_name', 'products.food_name', 'order_items.price', 'order_items.quantity', 'order_items.payment_method', 'order_items.created_at')
+        ->get();
+
+    return view('admin.orders.myorder', ['orders' => $orders]);
+}
+
+
+public function updateOrderStatus(Request $request, $orderId)
+{
+    // Retrieve the order by ID
+    $order = OrderItem::findOrFail($orderId);
+
+    // Check if payment status is unpaid
+    if ($order->payment_status != 'paid') {
+        return redirect()->back()->with('payment_not_paid', 'Payment is not yet paid. Cannot change delivery status.');
+    }
+
+    // Update the status
+    $order->status = 100; // Assuming 100 represents "Delivered", you can change this according to your status convention
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order status updated successfully.');
 }
 
       

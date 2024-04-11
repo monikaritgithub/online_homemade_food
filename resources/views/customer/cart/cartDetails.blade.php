@@ -129,8 +129,9 @@
                                 <input type="hidden" name="cart[{{ $item->id }}][payment_status]" value="pending">
                                 <input type="hidden" name="cart[{{ $item->id }}][price]" value="{{ $item->food_price }}">
                                 <input type="hidden" name="cart[{{ $item->id }}][quantity]" id="quantity_{{ $item->id }}" value="{{ $item->quantity }}">
-                            @endforeach
-
+                                <input type="hidden" name="cart[{{ $item->id }}][txn_id]" value="">
+                                @endforeach
+                                <input type="hidden" name="txn_id" value="">
                             <button type="submit" class="button button-primary">Order with Cash</button>
                         </form>
                     </div>
@@ -224,7 +225,7 @@
                 "_token" : "{{ csrf_token() }}"
             },
             success: function(res){
-                updateFormFields("Khalti", "Paid");
+                updateFormFields("Khalti", "paid",jsonResponse['idx']);
                         submitOrderForm();
                 console.log('transaction successfull');
                
@@ -267,11 +268,13 @@
                                         }
 
                                          // Function to update form fields with payment method and status
-    function updateFormFields(paymentMethod, paymentStatus) {
-        @foreach($cartItems as $item)
-            $('#order-form input[name="cart[{{ $item->id }}][payment_method]"]').val(paymentMethod);
-            $('#order-form input[name="cart[{{ $item->id }}][payment_status]"]').val(paymentStatus);
-        @endforeach
+    function updateFormFields(paymentMethod, paymentStatus,idx) {
+        $('#order-form input[name="txn_id"]').val(idx); // Assign the txn_id value to the main form
+    @foreach($cartItems as $item)
+        $('#order-form input[name="cart[{{ $item->id }}][payment_method]"]').val(paymentMethod);
+        $('#order-form input[name="cart[{{ $item->id }}][payment_status]"]').val(paymentStatus);
+        $('#order-form input[name="cart[{{ $item->id }}][txn_id]"]').val(idx); // Assign the same txn_id value to each cart item
+    @endforeach
     }
 
     // Function to submit the order form
