@@ -79,6 +79,15 @@ $user_name = Auth::user()->name;
         .view-product:hover {
             text-decoration: none;
         }
+
+
+        @keyframes blink {
+        50% { opacity: 0; }
+    }
+
+    .submit-btn {
+        animation: blink 1s infinite;
+    }
     </style>
 </head>
 <body>
@@ -94,6 +103,9 @@ $user_name = Auth::user()->name;
                         @foreach ($chef_orders as $chef_id => $chef_data)
                             <h3 class="pt-4">Chef Name: {{ $chef_data['chef_name'] }}</h3>
                             @foreach ($chef_data['orders'] as $order)
+                            @if($order['status'] == 100)
+                            <button type="button" id="create-review-btn" class="submit-btn justify-end text-end" onclick="redirectToReview({{$order['food_id']}})"><i class="fas fa-pen"></i> Give Review </button>
+                            @endif
                                 <a href="{{ route('customer.viewCartProduct', $order['food_id']) }}" class="view-product">
                                     <div class="card shadow mb-4">
                                         <div class="card-body">
@@ -121,16 +133,21 @@ $user_name = Auth::user()->name;
                                                              style="width: {{$order['status']}}%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="100%"
                                                              aria-valuemin="0" aria-valuemax="{{$order['status']}}"></div>
                                                     </div>
+                                                    
                                                     <div class="d-flex justify-content-between mt-1">
                                                         <p class="text-muted mb-0">Pending</p>
                                                         <p class="text-muted mb-0">Delivered</p>
                                                     </div>
+                                                    
                                                 </div>
                                                 <div class="col-md-6 text-end flex">
                                                     <p class="text-muted  mb-0  ">Quantity: {{ $order['quantity'] }}</p>
                                                 
                                                     <p class="text-muted mb-0 ">Price: Rs {{ number_format($order['price'], 2) }}</p>
+
                                                 </div>
+                                                                                                    
+
                                             </div>
                                         </div>
                                     </div>
@@ -148,6 +165,15 @@ $user_name = Auth::user()->name;
         </div>
     </div>
 </section>
+
+<script>
+    function redirectToReview(productId) {
+       
+        window.location.href = '/customer/reviews/create'+'/'+productId;    }
+
+ 
+</script>
+
 
 </body>
 </html>

@@ -355,8 +355,16 @@
 </script>
 
 
-<section class=" py-5 py-xl-8">
-
+<section class=" py-5 my-5 py-xl-8">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                    <h2 class="fs-6 text-secondary mb-2 text-uppercase text-center">Happy Customers Reviews</h2>
+                    
+                    <hr class="w-50 mx-auto mb-0 mb-xl-9 border-dark-subtle">
+                </div>
+            </div>
+        </div>
 
         <div class="container overflow-hidden">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
