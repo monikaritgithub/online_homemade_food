@@ -41,8 +41,22 @@ class CartController extends Controller
        return response()->json(['error' => 'Product not found'], 404);
    }
 
+   $reviews = DB::table('product_reviews')
+            ->join('products', 'product_reviews.product_id', '=', 'products.id')
+            ->join('users', 'product_reviews.customer_id', '=', 'users.id')
+            ->select('product_reviews.*', 'products.food_name as product_name', 'users.name as user_name','users.profile_photo_path as profile_photo_url','users.location')
+            ->where('product_reviews.product_id', $productId)
+            ->get();
+        
+        if ($reviews->isEmpty()) {
+            abort(404);
+        }
+    
+        // Chunk the reviews into groups of three
+        $reviewGroups = $reviews->chunk(3);
+
    // Pass data to the view and return it
-   return view('customer.cart.cart', ['productDetails' => $productDetails]);
+   return view('customer.cart.cart', ['productDetails' => $productDetails],['reviewGroups' => $reviewGroups],['productId' => $productId]);
 }
 
     
