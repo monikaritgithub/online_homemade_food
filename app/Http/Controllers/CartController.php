@@ -48,9 +48,7 @@ class CartController extends Controller
             ->where('product_reviews.product_id', $productId)
             ->get();
         
-        if ($reviews->isEmpty()) {
-            abort(404);
-        }
+        
     
         // Chunk the reviews into groups of three
         $reviewGroups = $reviews->chunk(3);

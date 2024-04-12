@@ -28,6 +28,7 @@ class ProductReviewController extends Controller
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
             'review' => 'nullable|string',
+            'product_id' => 'required|exists:products,id',
         ]);
 
         $reviewData = $request->only('rating', 'review');
@@ -36,7 +37,8 @@ class ProductReviewController extends Controller
 
         ProductReview::create($reviewData);
 
-        return redirect()->route('customer.reviews.show')->with('success', 'Review added successfully.');
+        return redirect('/customer/cart/' . $request->product_id)->with('success', 'Review added successfully.');
+
     }
     public function show($id)
     {
