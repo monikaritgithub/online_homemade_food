@@ -6,9 +6,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductReviewController;
 
 use App\Http\Controllers\PaymentController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+
 
 
 /*
@@ -149,6 +151,16 @@ Route::patch('/orders/{orderId}/update-status', [OrderController::class, 'update
 
 
 
+// review routes
+
+
+Route::get('customer/reviews', [ProductReviewController::class, 'index'])->name('customer.reviews.index');
+Route::get('customer/reviews/create/{productId}', [ProductReviewController::class, 'create'])->name('customer.reviews.create');
+Route::post('customer/reviews', [ProductReviewController::class, 'store'])->name('customer.reviews.store');
+Route::get('customer/reviews/{id}', [ProductReviewController::class, 'show'])->name('customer.reviews.show');
+Route::get('customer/reviews/{id}/edit', [ProductReviewController::class, 'edit'])->name('customer.reviews.edit');
+Route::put('customer/reviews/{id}', [ProductReviewController::class, 'update'])->name('customer.reviews.update');
+Route::delete('customer/reviews/{id}', [ProductReviewController::class, 'destroy'])->name('customer.reviews.destroy');
 
 
 
