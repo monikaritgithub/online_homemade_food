@@ -22,7 +22,7 @@
                 @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
-                    <td>{{ $order->customer_name }}</td>
+                   <td> <a href="{{ url('/users/' . $order->customer_id) }}">{{ $order->customer_name }}</a></td>
                     <td>{{ $order->food_name }}</td>
                     <td>{{ $order->price }}</td>
                     <td>{{ $order->quantity }}</td>

@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{ $payment->id }}</td>
                             <td>{{ $payment->food_name }}</td>
-                            <td>{{ $payment->customer_name }}</td>
+                            <td> <a href="{{ url('/users/' . $payment->customer_id) }}">{{ $payment->customer_name }}</a></td>
                             <td>{{ $payment->price }}</td>
                             <td>{{ $payment->payment_status }}</td>
                             <td>
@@ -71,7 +71,7 @@
                         <tr>
                             <td>{{ $payment->id }}</td>
                             <td>{{ $payment->food_name }}</td>
-                            <td>{{ $payment->customer_name }}</td>
+                            <td> <a href="{{ url('/users/' . $payment->customer_id) }}">{{ $payment->customer_name }}</a></td>
                             <td>{{ $payment->amount }}</td>
                             <td>{{ $payment->status }}</td>
                             <td>

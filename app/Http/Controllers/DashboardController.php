@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $recentSales = DB::table('order_items')
         ->join('products', 'order_items.food_id', '=', 'products.id')
         ->join('users', 'order_items.customer_id', '=', 'users.id') // Join the users table to get customer name
-        ->select('order_items.id', 'products.food_name', 'users.name AS customer_name', DB::raw('price * quantity AS amount'), 'order_items.payment_method')
+        ->select('order_items.id', 'products.food_name', 'users.name AS customer_name','users.id as user_id', DB::raw('price * quantity AS amount'), 'order_items.payment_method')
         ->orderByDesc('order_items.created_at')
         ->limit(10)
         ->get();
@@ -38,13 +38,14 @@ class DashboardController extends Controller
 
         // Top Selling Chefs
         $topSellingChefs = DB::table('order_items')
-            ->join('users', 'order_items.chef_id', '=', 'users.id')
-            ->select('users.name AS chef_name', DB::raw('SUM(order_items.quantity) AS total_quantity'), DB::raw('SUM(order_items.price * order_items.quantity) AS total_amount_generated'))
-            ->groupBy('users.name')
-            ->orderByDesc('total_amount_generated')
-            ->limit(5)
-            ->get();
+    ->join('users', 'order_items.chef_id', '=', 'users.id')
+    ->select('users.id AS user_id', 'users.name AS chef_name', DB::raw('SUM(order_items.quantity) AS total_quantity'), DB::raw('SUM(order_items.price * order_items.quantity) AS total_amount_generated'))
+    ->groupBy('users.id', 'users.name')
+    ->orderByDesc('total_amount_generated')
+    ->limit(5)
+    ->get();
 
-        return view('admin.adminDashboard', compact('totalSales', 'cashSales', 'khaltiSales', 'recentSales', 'topSellingProducts', 'topSellingChefs'));
+return view('admin.adminDashboard', compact('totalSales', 'cashSales', 'khaltiSales', 'recentSales', 'topSellingProducts', 'topSellingChefs'));
+
     }
 }

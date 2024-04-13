@@ -66,7 +66,7 @@
                 <tr @if ($count >= 5) class="hidden-row" @endif>
                     <td>{{ $sale->id }}</td>
                     <td>{{ $sale->food_name }}</td>
-                    <td>{{ $sale->customer_name }}</td>
+                    <td> <a href="{{ url('/users/' . $sale->user_id) }}">{{ $sale->customer_name }}</a></td>
                     <td>{{ $sale->amount }}</td>
                     <td>{{ $sale->payment_method }}</td>
                 </tr>
@@ -128,7 +128,7 @@
                 <tbody>
                     @foreach ($topSellingChefs as $chef)
                     <tr>
-                        <td>{{ $chef->chef_name }}</td>
+                    <td> <a href="{{ url('/users/' . $chef->user_id) }}">{{ $chef->chef_name }}</a></td>
                         <td>{{ $chef->total_quantity }}</td>
                         <td>{{ $chef->total_amount_generated }}</td>
                     </tr>
