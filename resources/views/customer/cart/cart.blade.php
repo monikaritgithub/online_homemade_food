@@ -109,8 +109,10 @@
                                                 aria-label="Product content">
                                                 <header>
                                                     
-                                                    <h2 class="company-name" tabindex="0">{{ $productDetails->name }}
-                                                    </h2>
+                                                <a href="{{ url('/users/' . $productDetails->chief_id) }}">
+    <h2 class="company-name" tabindex="0">{{ $productDetails->name }}</h2>
+</a>
+
                                                     <p class="product__name" tabindex="0">Autumn Limited Edition
                                                         Sneakers</p>
                                                     <h3 class="product__title" tabindex="0">

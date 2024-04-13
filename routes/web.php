@@ -164,4 +164,8 @@ Route::delete('customer/reviews/{id}', [ProductReviewController::class, 'destroy
 
 
 
+// show profile
+use App\Http\Controllers\UserController;
+
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
