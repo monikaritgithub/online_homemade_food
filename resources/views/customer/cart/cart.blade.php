@@ -30,7 +30,7 @@
         // Automatically close the success message after 3 seconds
         setTimeout(function() {
             document.getElementById('successAlert').style.display = 'none';
-        }, 2000);
+        }, 5000);
     </script>
 @endif
                             <div class="card-body p-4">

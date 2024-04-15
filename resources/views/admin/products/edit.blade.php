@@ -20,6 +20,18 @@
         <div className="p-4">
             <form class="row g-3 p-10 m-10" method="POST" action="{{ route('admin.editProduct', $product->id) }}"
                 enctype="multipart/form-data">
+                @if(session('success_message'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success_message') }}
+        
+    </div>
+    <script>
+        // Automatically close the success message after 3 seconds
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 5000);
+    </script>
+@endif
                 @csrf
 
                 <div class="col-md-6">

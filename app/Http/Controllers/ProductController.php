@@ -21,6 +21,7 @@ class ProductController extends Controller
         // Retrieve a list of products and display them.
         $user = auth()->user();
         $products = Product::where('chief_id', $user->id)->get();
+       
         return view('admin.products.index',compact('products'));
     }
 
@@ -64,6 +65,9 @@ class ProductController extends Controller
     $validatedData['chief_id'] = Auth::id();
 
         Product::create($validatedData);
+        session()->forget('success_message');
+        session()->flash('success_message', 'Product created successfully');
+      
 
         return view('admin.products.create');    }
 
@@ -71,6 +75,7 @@ class ProductController extends Controller
     {
         // Display the details of a specific product.
         $product = Product::findOrFail($id);
+        session()->forget('success_message');
         return view('products.show', compact('product'));
     }
 
@@ -78,6 +83,8 @@ class ProductController extends Controller
     {
         // Display a form for editing a product.
         $product = Product::findOrFail($id);
+        session()->forget('success_message');
+        session()->flash('success_message', 'Product updated successfully');
         return view('admin.products.edit', compact('product'));
     }
 
@@ -116,6 +123,8 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
         $product->update($validatedData);
+        session()->forget('success_message');
+        session()->flash('success_message', 'Product updated successfully');
 
         return redirect()->route('admin.viewProduct',$id)->with('success', 'Product updated successfully');
     }
@@ -127,6 +136,9 @@ class ProductController extends Controller
 
     // Perform the deletion
     $product->delete();
+
+    session()->forget('success_message');
+    session()->flash('success_message', 'Product deleted successfully');    
 
     // Redirect to the index page or any other page after deletion
     return redirect()->route('admin.viewProduct')->with('success', 'Product deleted successfully');
