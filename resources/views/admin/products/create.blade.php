@@ -19,10 +19,24 @@
 
         <x-validation-errors class="mb-4" />
         <div className="container">
+        <div class=" container">
+
             <form class="row g-3 p-10 m-10" method="POST" action="{{ route('admin.storeProduct') }}"
                 enctype="multipart/form-data">
-                @csrf
 
+                @csrf
+                @if(session('success_message'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success_message') }}
+        
+    </div>
+    <script>
+        // Automatically close the success message after 3 seconds
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 5000);
+    </script>
+@endif
                 <div class="col-md-6">
                     <label for="foodName" class="form-label">Food Name</label>
                     <input type="text" class="form-control" id="foodName" name="food_name">

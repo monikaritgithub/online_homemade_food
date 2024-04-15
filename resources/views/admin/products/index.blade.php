@@ -13,6 +13,18 @@
     <body>
 
         <div class="pt-10 mt-10 container">
+        @if(session('success_message'))
+    <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success_message') }}
+        
+    </div>
+    <script>
+        // Automatically close the success message after 3 seconds
+        setTimeout(function() {
+            document.getElementById('successAlert').style.display = 'none';
+        }, 5000);
+    </script>
+@endif
             <div class="table-responsive">
                 <table class="table" class="">
                     <thead class="table-dark">
