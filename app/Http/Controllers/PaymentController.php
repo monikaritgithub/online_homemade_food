@@ -123,14 +123,14 @@ public function chefIndex()
 
     return view('admin.payments.payments', compact('cashPayments', 'khaltiPayments'));
 }
-
+ 
 
 public function updatePaymentStatus(Request $request, $orderId)
 {
     // Validate request
     $request->validate([
         'payment_status' => 'required|in:pending,paid',
-    ]);
+    ]); 
 
     // Update payment status
     $order = OrderItem::findOrFail($orderId);
